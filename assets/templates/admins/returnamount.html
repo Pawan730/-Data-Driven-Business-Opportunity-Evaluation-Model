@@ -1,0 +1,77 @@
+
+{% extends 'admins/design.html' %}
+{% block adminblock %}
+{% load static %}
+
+
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	exportEnabled: true,
+	animationEnabled: true,
+	title:{
+		text: "RETURNAMOUNT AVERAGE ANALYSIS"
+	},
+	legend:{
+		cursor: "pointer",
+		itemclick: explodePie
+	},
+	data: [{
+		{% if chart_type == "bar" %}
+		type: "bar",
+	{% elif chart_type == "line" %}
+		type: "line",
+	{% elif chart_type == "spline" %}
+		type: "spline",
+	{% endif %}
+
+		showInLegend: true,
+		toolTipContent: "{name}: <strong>{y}%</strong>",
+		indexLabel: "{y} % ",
+		dataPoints: [
+		{% for clus in gg %}
+			{ y: {{clus.s3}}, name: "{{clus.field}}" },
+		{% endfor %}
+
+		]
+	}]
+});
+chart.render();
+}
+
+function explodePie (e) {
+	if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	} else {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	}
+	e.chart.render();
+
+}
+</script>
+
+<style>
+        .sidemenu{
+    border-style:solid;
+    border-width:1px;
+    width:300px;
+    height:370px;
+    float:left;
+    position:fixed;
+    right:1em;
+    top:10em;
+    background:rgb(0,128,128);
+    margin-top:70px;
+
+}
+</style>
+
+
+
+<div id="chartContainer" style="height: 370px; width:70%; margin-top:20px;margin-left:50px;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'admins/design.html' %}
+{% block adminblock %}
+{% load static %}
+
+<style>
+    .viewdata{
+     position: absolute;
+    margin-top:-20px;
+    margin-left:100px;
+    padding:5px;
+    height:200px;
+    width:750px;
+    float:left;
+    }
+    .viewdata table{
+    width:70em;
+    text-align:center;
+
+    border-spacing:1px;
+    background:;
+}
+
+
+.viewdata table tr th{
+background:rgb(128,0,0);
+padding:5px;
+}
+.viewdata table tr td{
+background:rgba(128,0,0,0.5);
+padding:5px;
+}
+.viewdata table tr:hover td{
+background:rgba(0,0,255,0.5);
+}
+
+</style>
+<div class="viewdata">
+<table>
+    <tr>
+        <th style="color:yellow">FIELDS</th>
+        <th style="color:yellow">INVESTMENT AVERAGE</th>
+        <th style="color:yellow">RETURN AVERAGE</th>
+        <th style="color:yellow">PROFIT AVERAGE </th>
+        <th style="color:yellow">LOSS AVERAGE</th>
+
+    </tr>
+    {% for v in objects %}
+    <tr>
+        <td style="color:	white">{{v.field}}</td>
+        <td style="color:	aqua">{{v.s1}}</td>
+        <td style="color:	aqua">{{v.s2}}</td>
+        <td style="color:	aqua">{{v.s3}}</td>
+        <td style="color:	aqua">{{v.s4}}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .menu table{
+          width:100%;
+          text-align:center;
+
+          }
+          .menu table td:hover{
+          background:rgb(0,128,0);
+
+          }
+          .menu table td{
+          background:rgb(139,0,139);
+
+         }
+          .menu table,.menu table th,.menu table td {
+    border: 1px solid rgb(255, 153, 153,0.5);
+    border-collapse: collapse;
+
+}
+.menu table th,.menu table  td {
+    padding: 15px;
+
+    }
+    .mainholder{
+    margin-top:50px;
+    }
+
+   .any{
+  background:url("{% static 'image3.jpg' %}");
+   background-repeat: no-repeat;
+    background-size: cover;
+    opacity:0.8;
+    width:100%;
+    height:100%;
+    padding:0px;
+    spacing:0px;
+    margin:0px;
+    position:fixed;
+    z-index:-1;
+    margin-top:-20px;
+
+   }
+
+
+    </style>
+</head>
+<body>
+<div class="any"></div>
+<div class="background-image">
+    <h1 style="color:rgb(0,255,0); font-family:Vijaya;margin-left:100px">ENTREPRENRUR INVESTMENT ANALYSIS  </h1>
+
+<div class="menu">
+        <table>
+            <tr>
+
+                <td><a  style="color:yellow;text-decoration: none;" href="../viewdata"> ANALYSIS PAGE</a></td>
+                <td><a  style="color:yellow;text-decoration: none;" href="../maximun_value"> BUSINESS OPPORTUNITY</a></td>
+                 <td><a  style="color:yellow;text-decoration: none;" href="../adminpage"> INVESTMENT AVERAGE</a></td>
+                <td><a  style="color:yellow;text-decoration: none;" href="../returnamount"> RETURN AMOUNT AVERAGE </a></td>
+                <td><a  style="color:yellow;text-decoration: none;" href="../profit"> PROFIT AVERAGE </a></td>
+                <td><a  style="color:yellow;text-decoration: none;" href="../loss"> LOSS AVERAGE</a></td>
+                <td><a  style="color:yellow;text-decoration: none;" href="../logout">LOGOUT</a></td>
+
+
+
+            </tr>
+        </table>
+    </div>
+
+</div>
+<div class="mainholder">
+{% block adminblock %}
+{% endblock %}
+</div>
+</div>
+
+
+</body>
+</html>
